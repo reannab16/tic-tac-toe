@@ -1,0 +1,149 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+    /* border: 1px red solid; */
+}
+
+@font-face {
+    font-family: 'cloud';
+    src:url(../fonts/AlphaClouds.ttf) format('truetype'),
+        url(../fonts/alphaclouds-webfont.woff2) format('woff2'),
+        url(../fonts/alphaclouds-webfont.woff) format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.background-container {
+    height: 100vh;
+    width: 100%;
+    background-color: #daeffa;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.header {
+    font-family: "cloud";
+    font-size: 50px;
+}
+
+.dash {
+    font-family: sans-serif;
+}
+
+.board {
+    margin-top: 5%;
+    height: 60vh;
+    width: 60vh;
+    border: solid #054466 3px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.block {
+    height: calc(20vh - 2px);
+    border: solid #054466 2px;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    flex: 0 0 calc(20vh - 2px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.character {
+    height: 18vh;
+    width: 18vh;
+}
+
+.character:hover {
+    cursor: pointer;
+}
+
+/* .cross:after {
+    content: '\00D7';
+    color: #054466;
+    height: 140px;
+    width: 140px;
+} */
+
+.nought {
+    height: 15vh;
+    width: 15vh;
+    background-color: #054466;
+    border-radius: 50%;
+    
+}
+
+.cross {
+    width: 2vh;
+    height: 18vh;
+    transform: rotate(45deg);
+    background-color: #054466;
+    position: absolute;
+    top: calc(50%-9vh);
+    left: calc(50%-1vh);
+    border-radius: 20px;
+    transform-origin: center center;
+    -webkit-transform:rotate(45deg);
+    -ms-transform:rotate(45deg);
+}
+
+.cross::after {
+    content: "";
+    transform: rotate(-90deg);
+    width: 2vh;
+    height: 18vh;
+    background-color: #054466;
+    position: absolute;
+    border-radius: 20px;
+}
+
+@media screen and (max-width: 550px) {
+    .board {
+        height: 45vh;
+        width: 45vh;
+    }
+
+    .block {
+        height: calc(15vh - 2px);
+        flex: 0 0 calc(15vh - 2px);
+    }
+
+    .character {
+        height: 12vh;
+        width: 12vh;
+    }
+
+    .nought {
+        height: 11vh;
+        width: 11vh;
+    }
+
+    .cross {
+        width: 2vh;
+        height: 12vh;
+        top: calc(50%-6vh);
+        left: calc(50%-1vh);
+    }
+
+    .cross::after {
+        content: "";
+        width: 2vh;
+        height: 12vh;
+    }
+
+    .header {
+        font-family: "cloud";
+        font-size: 30px;
+    }
+
+}

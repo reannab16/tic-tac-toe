@@ -147,3 +147,68 @@
     }
 
 }
+
+#popup {
+    position: fixed;
+    top: 16vh;
+    left: 16vw;
+    width: 72vw;
+    height: 72vh;
+    border-radius: 62px;
+    border: 10px solid #054466;
+    box-sizing: border-box;
+    background-color: #fffdee;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.5s;
+    overflow: hidden;
+    z-index: 5000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#popup.active {
+    visibility: visible;
+    opacity: 1;
+    transition: 0.5s;
+}
+
+.popupContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-text {
+    font-family: "cloud";
+    font-size: 45px;
+    position: relative;
+    height: 50px;
+    width: inherit;
+    margin-bottom: 5px;
+}
+
+.which-won.cross {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.close-btn {
+    height: 70px;
+    width: 170px;
+    background-color: #054466;
+    border: none;
+    border-radius: 20px;
+    color:#fffdee;
+    font-size: 25px;
+    position: relative;
+    margin-top: 10px;
+}
+
+.close-btn:hover {
+    background-color: #daeffa;
+}
+

@@ -21,6 +21,8 @@ var my_dic = {
     9: ''
 }
 
+
+
 draw = false;
 
 
@@ -36,36 +38,74 @@ function checkWin(whichPlayer) {
     });
 };
 
-function checkDraw() {
-    if (checkWin('cross') == false && checkWin('nought') == false) {
-        if (allSquares.forEach(square => {
-            !square.classList.contains('character')
-        })) {
-            draw = true
-        }
-        return draw;
-    };
+var popupTextContent = document.querySelector('.main-text').textContent
+
+function  popupContent() {
+    document.querySelector('#popup').classList.add('active');
+
+    if (checkWin('cross') == true && checkWin('nought') == false && draw == false) {
+        document.querySelector('.main-text').textContent = 'CROSS WINS';
+        document.querySelector('.which-won').classList.add('cross');
+    }
+
+    if (checkWin('nought') == true && checkWin('cross') == false && draw == false) {
+        document.querySelector('.main-text').textContent = 'NOUGHT WINS';
+        document.querySelector('.which-won').classList.add('nought');
+    }
+
+    if (draw = true && checkDraw() == true) {
+        document.querySelector('.main-text').textContent = "IT'S A DRAW";
+    }
 }
 
+function checkDraw() {
+    // if (checkWin('cross') == false && checkWin('nought') == false) {
+    //     if (allSquares.forEach(square => {
+    //         !square.classList.contains('character')
+    //     })) {
+    //         draw = true
+    //     }
+    //     return draw;
+    // };
+    // return draw;
+    if (checkWin('cross') == false && checkWin('nought') == false)
+        return [...allSquares].every(square => {
+            return square.classList.contains('cross') || square.classList.contains('nought');
+        })
+
+}
+
+console.log(checkDraw());
+
 function endGame(whichPlayer) {
+    console.log(checkDraw());
     if (checkWin(whichPlayer) == true) {
         unplayedSquares.forEach(square => {
             square.classList.remove('character');
+            popupContent();
         })
     }
+
+    if (checkDraw() == true) {
+        console.log('works');
+        popupContent();
+    }
 }
+
 
 
 document.addEventListener('click', function addCharacter(event) {
 
     if (character == 'cross' && event.target.classList.contains('character')) {
-        console.log(event.target);
+        // console.log(event.target);
         event.target.classList.add('cross');
         event.target.classList.remove('character');
         checkWin('cross');
         endGame('cross');
         character = 'nought';
         checkDraw();
+        // console.log(checkWin('cross'));
+        console.log(checkDraw());
         
     };
 
@@ -75,7 +115,10 @@ document.addEventListener('click', function addCharacter(event) {
         checkWin('nought');
         endGame('nought');
         character = 'cross';
+        console.log(checkDraw());
 
     };
 
 });
+
+
